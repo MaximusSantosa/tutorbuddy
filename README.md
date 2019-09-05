@@ -20,4 +20,4 @@ This project is licensed under the MIT License
 
 ## Acknowledgments
 
-* Thank you to Sohit G
+* Special thank to Sohit G
