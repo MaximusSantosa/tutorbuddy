@@ -1,5 +1,5 @@
 # SAS Tutor Buddy
-SAS Project connecting students with tutor
+Singapore American School Project connecting students with tutor
 
 # Website
 https://www.sastutorbuddy.com/
