@@ -1,0 +1,352 @@
+body {
+  background-color: #1F375F;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+/*homepage*/
+.title, #description, #leaderTitle {
+  text-align: center;
+  color:white;
+}
+#description {
+  font-size:5vh;
+  padding-bottom: 9vh;
+}
+.title {
+  font-size: 12vh;
+  margin-bottom: -5px;
+}
+
+.welcome {
+  font-size: 6vh;
+  color: white;
+  text-align: center;
+}
+.buddy {
+  color:#29E7CD;
+}
+#homeLogo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50vh;
+  height: 50vh;
+  margin-top: 40px;
+  margin-bottom: 18px;
+}
+
+#homeLogoAbout {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25vh;
+  height: 25vh;
+  margin-top: 45px;
+}
+
+/*navbar*/
+.navbar-brand {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.nav-link {
+  font-size: 18px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+.nav-item:hover {
+  background-color: #2F576F;
+}
+
+#login2 {
+  float: right;
+}
+
+.loginForm {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10vh;
+  width: max-content;
+  padding-left: 50px;
+  padding-right: 50px;
+  background-color: #29E7CD;
+  padding: 15px 50px;
+}
+
+#loginTitle {
+  text-align: center;
+  color: #1F375F;
+  font-size: 9vh;
+}
+
+#loginbut {
+  width:100%;
+  text-align: center;
+  background-color: #DAA520
+}
+
+#particles-js{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -500;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #2F576F;
+  opacity: 0.9;
+  color: white;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  margin-top: 50px;
+
+}
+
+#mailto:hover {
+  color: #22c1ba;
+}
+
+#mailto {
+  color: #DAA520;
+}
+
+/*about*/
+#aboutdescription {
+  color:white;
+  font-size: 2.6vh;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+#aboutButton {
+  background-color: #DAA520;
+}
+#buttonSignUp {
+  text-align: center;
+  margin: auto;
+}
+#buttonContainer {
+  width: 8%;
+  margin: auto;
+}
+
+/*leaderboard*/
+.card {
+  margin-bottom: 7vh;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 10px;
+  background-color: #22c1ba;
+  text-align: center;
+  color: white;
+}
+
+#leaderContainer {
+  margin-top: 5vh;
+}
+.spacer {
+  height: 7vh;
+}
+.formtitles {
+  color: #1F375F;
+  text-align: center;
+}
+.titleWrapper {
+  font-family: 'Raleway', sans-serif;
+  font-weight: normal;
+  background-color: #29E7CD;
+  padding: 0.5vh;
+  margin-bottom: 3vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: max-content;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+#formsubmit {
+  margin-left: auto;
+  margin-right: auto;
+  background: #DAA520;
+  margin-bottom: 10px;
+}
+
+#hsform{
+  font-family: 'Raleway', sans-serif;
+  font-weight: normal;
+  text-align: center;
+}
+
+.form-check-label {
+  color:white;
+}
+
+.flexrow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+}
+
+.infotable {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 100vw;
+}
+
+.formday {
+  color:white;
+}
+
+.flexitem {
+  margin: 0.5vw
+}
+
+.dashContainer {
+  text-align: center;
+}
+.dashboardTitle {
+  color: #1F375F;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.dashForm {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.5vh;
+  width: 30vw;
+  background-color: #DAA520;
+  padding: 15px;
+}
+.number-input {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25;
+  margin-bottom: 10px;
+}
+
+input[type=text] {
+  width: 100%;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  margin: 0 auto;
+}
+
+form { 
+  margin: 0 auto; 
+  width:250px;
+  }
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#searchtutorbar {
+  text-align: center;
+}
+
+#coursetable {
+  margin-top: 15px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 30%;
+  text-align: center;
+}
+
+.findtutorlink {
+  color:white;
+}
+
+.findtutorlink:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.signup {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10vh;
+  background-color: #29E7CD;
+  padding: 15px;
+  width: max-content;
+}
+
+.custom-select {
+  position: relative;
+  font-family: 'Raleway', sans-serif;
+  background-color: DodgerBlue;
+  height: fit-content;
+}
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+.select-selected {
+  background-color: DodgerBlue;
+}
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+}
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.datepicker {
+  text-align: center;
+  width: max-content;
+  margin-top: 5px;
+}

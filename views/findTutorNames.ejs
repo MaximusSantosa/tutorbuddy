@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include partials/head %>
+    <% include partials/script %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    
+      <script>
+        particlesJS.load('particles-js', './javascripts/particlesjs-config.json', function () {
+          console.log('callback - particles.js config loaded');
+        });
+      </script>
+       <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+       <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+       <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+       <script>
+       $( function() {
+         $( ".datepicker" ).datepicker();
+       } );
+       </script>
+</head>
+
+<body>
+  <% include partials/menu %>
+    <div id="particles-js"></div>
+    <div class="loginForm">
+      <h1 id="loginTitle">
+        <%= name %>
+      </h1>
+    </div>
+    <div class="row">
+      <% function containsObject(obj, list) { var i; for (i = 0; i < list.length; i++) {if (list[i] === obj) {return true;}} return false;} %>
+      <% for (var i = 0; i < allInfo.length; i++) { %>
+        <% if (containsObject(name, allInfo[i].classes)) { %>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= allInfo[i].fName %>
+          <%= allInfo[i].lName %>
+            </h5>
+            <span class="card-text">
+              <b>Free Times:</b>
+            </span>
+            <% for (var j = 0; j < allInfo[i].times.length; j++) { %>
+              <span class="card-text">
+                <%= allInfo[i].times[j] %>,</span>
+              <% } %>
+              <br>
+              <br>
+              <form class="form" action="/requestform" method="post">
+     
+                  <select name="times">
+                    <option value="0">Select Time:</option>
+                    <% for (var j = 0; j < allInfo[i].times.length; j++) { %>
+                      <option value="<%= allInfo[i].times[j] %>"><%= allInfo[i].times[j] %></option>
+                    <% } %>
+                  </select>
+                  
+                  <input type="text" name="date" class="datepicker" placeholder="Select Date...">
+
+                <br>
+                <br>
+                <input type="hidden" name="firstName" value="<%= allInfo[i].fName %>">
+                <input type="hidden" name="lastName" value="<%= allInfo[i].lName %>">
+                <input type="hidden" name="email" value="<%= allInfo[i].email %>">
+                <input type="hidden" name="subject" value="<%= name %>">
+                <input class="btn btn-primary" type="submit" value="Request" name="submit">
+              </form>
+              
+
+    </div>
+    </div>
+    </div>
+    <% } %>
+    <% } %>
+      
+      </div>
+      <% include partials/footer %>
+    
+</body>
+
+</html>

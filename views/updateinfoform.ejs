@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include partials/head %>
+    <% include partials/script %>
+      <script>
+        particlesJS.load('particles-js', './javascripts/particlesjs-config.json', function () {
+          console.log('callback - particles.js config loaded');
+        });
+      </script>
+</head>
+
+<body>
+
+  <% include partials/menu %>
+    <div id="particles-js"></div>
+    <div class=spacer></div>
+    <div class=titleWrapper>
+      <form class="form" method="post" action="/updateinfo" name="testform">
+        <input type="hidden" value="<%=user.totalMinutes%>" name="totalMinutes">
+        <h2 class="formtitles">Classes You Want To Tutor</h2>
+    </div>
+    <div class="flexrow">
+      <% for (var i = 0; i < 4; i++) { %>
+
+        <div class="flexitem">
+          <h3 class="formday">
+            <%= areas[i] %>
+          </h3>
+          <% for (var j = 0; j < courses[areas[i]].length; j++) { %>
+            <div class="form-check" id="hsform" style="text-align:left">
+                <% var x = courses[areas[i]][j] %>
+                <% var y = false %>
+                <% for (var k = 0; k < user.classes.length; k++) { %>
+                    <% if(courses[areas[i]][j] == user.classes[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="<%= x %>" id="course" name="classes" checked>
+                    <label class="form-check-label" for="course">
+                    <%= courses[areas[i]][j] %>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="<%= x %>" id="course" name="classes">
+                    <label class="form-check-label" for="course">
+                    <%= courses[areas[i]][j] %>
+                <% } %>
+            </div>
+            <% } %>
+        </div>
+
+        <% } %>
+    </div>
+    <div class="flexrow">
+      <% for (var i = 4; i < areas.length; i++) { %>
+      
+            <div class="flexitem">
+              <h3 class="formday">
+                <%= areas[i] %>
+              </h3>
+              <% for (var j = 0; j < courses[areas[i]].length; j++) { %>
+                <div class="form-check" id="hsform" style="text-align:left">
+                        <% var x = courses[areas[i]][j] %>
+                        <% var y = false %>
+                        <% for (var k = 0; k < user.classes.length; k++) { %>
+                            <% if(courses[areas[i]][j] == user.classes[k]) { %>
+                                <% y = true; %>
+                            <% } %>
+                        <% } %>
+                        <% if (y == true) { %>
+                            <input class="form-check-input" type="checkbox" value="<%= x %>" id="course" name="classes" checked>
+                            <label class="form-check-label" for="course">
+                            <%= courses[areas[i]][j] %>
+                        <% } else { %>
+                            <input class="form-check-input" type="checkbox" value="<%= x %>" id="course" name="classes">
+                            <label class="form-check-label" for="course">
+                            <%= courses[areas[i]][j] %>
+                        <% } %>
+                    </div>
+                <% } %>
+            </div>
+        
+        <% } %>
+      </div>
+          <div class=titleWrapper>
+            <h2 class="formtitles">Your Available Times</h2>
+          </div>
+
+          <div class="flexrow">
+            <div class="flexitem">
+              <h3 class="formday">Monday</h3>
+              <div class="form-check" id="hsform">
+                <% var y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("Monday Morning Flex" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="Monday Morning Flex" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    Morning Flex
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="Monday Morning Flex" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                    Morning Flex
+                    </label>
+                <% } %>
+                <br>
+                <% y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("Monday Lunch" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="Monday Lunch" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    Lunch
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="Monday Lunch" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                    Lunch
+                    </label>
+                <% } %>
+                <br>
+                <% y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("Monday After School (3-4:30)" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="Monday After School (3-4:30)" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                        After School (3-4:30)
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="Monday After School (3-4:30)" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                        After School (3-4:30)
+                    </label>
+                <% } %>
+                <br>
+                <% y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("Monday After School (4:30-6)" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="Monday After School (4:30-6)" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    After School (4:30-6)
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="Monday After School (4:30-6)" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                    After School (4:30-6)
+                    </label>
+                <% } %>
+                <br>
+              </div>
+            </div>
+            <div class="flexitem">
+              <h3 class="formday">Tuesday</h3>
+              <div class="form-check" id="hsform">
+                <% var y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("Tuesday Lunch" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="Tuesday Lunch" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    Lunch
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="Tuesday Lunch" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                    Lunch
+                    </label>
+                <% } %>
+                <br>
+                <% y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("Tuesday After School (3-4:30)" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="Tuesday After School (3-4:30)" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                        After School (3-4:30)
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="Tuesday After School (3-4:30)" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                        After School (3-4:30)
+                    </label>
+                <% } %>
+                <br>
+                <% y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("Tuesday After School (4:30-6)" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="Tuesday After School (4:30-6)" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    After School (4:30-6)
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="Tuesday After School (4:30-6)" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                    After School (4:30-6)
+                    </label>
+                <% } %>
+                <br>
+              </div>
+            </div>
+            <div class="flexitem">
+              <h3 class="formday">Wednesday</h3>
+              <div class="form-check" id="hsform">
+                <% var y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("Wednesday Morning Flex" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="Wednesday Morning Flex" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    Morning Flex
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="Wednesday Morning Flex" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                    Morning Flex
+                    </label>
+                <% } %>
+                <br>
+                <% y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("Wednesday Lunch" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="Wednesday Lunch" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    Lunch
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="Wednesday Lunch" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                    Lunch
+                    </label>
+                <% } %>
+                <br>
+                <% y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("Wednesday After School (3-4:30)" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="Wednesday After School (3-4:30)" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                        After School (3-4:30)
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="Wednesday After School (3-4:30)" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                        After School (3-4:30)
+                    </label>
+                <% } %>
+                <br>
+                <% y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("Wednesday After School (4:30-6)" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="Wednesday After School (4:30-6)" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    After School (4:30-6)
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="Wednesday After School (4:30-6)" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                    After School (4:30-6)
+                    </label>
+                <% } %>
+                <br>
+              </div>
+            </div>
+            <div class="flexitem">
+              <h3 class="formday">Thursday</h3>
+              <div class="form-check" id="hsform">
+                <% var y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("Thursday Lunch" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="Thursday Lunch" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    Lunch
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="Thursday Lunch" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                    Lunch
+                    </label>
+                <% } %>
+                <br>
+                <% y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("Thursday After School (3-4:30)" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="Thursday After School (3-4:30)" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                        After School (3-4:30)
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="Thursday After School (3-4:30)" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                        After School (3-4:30)
+                    </label>
+                <% } %>
+                <br>
+                <% y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("Thursday After School (4:30-6)" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="Thursday After School (4:30-6)" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    After School (4:30-6)
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="Thursday After School (4:30-6)" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                    After School (4:30-6)
+                    </label>
+                <% } %>
+                <br>
+              </div>
+            </div>
+            <div class="flexitem">
+              <h3 class="formday">Friday</h3>
+              <div class="form-check" id="hsform">
+                <% var y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("Friday Morning Flex" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="Friday Morning Flex" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    Morning Flex
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="Friday Morning Flex" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                    Morning Flex
+                    </label>
+                <% } %>
+                <br>
+                <% y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("Friday Lunch" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="Friday Lunch" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    Lunch
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="Friday Lunch" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                    Lunch
+                    </label>
+                <% } %>
+                <br>
+                <% y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("Friday After School (3-4:30)" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="Friday After School (3-4:30)" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                        After School (3-4:30)
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="Friday After School (3-4:30)" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                        After School (3-4:30)
+                    </label>
+                <% } %>
+                <br>
+                <% y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("Friday After School (4:30-6)" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="Friday After School (4:30-6)" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    After School (4:30-6)
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="Friday After School (4:30-6)" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                    After School (4:30-6)
+                    </label>
+                <% } %>
+                <br>
+              </div>
+            </div>
+            <div class="flexitem">
+              <h3 class="formday">Free Blocks (A)</h3>
+              <div class="form-check" id="hsform">
+                <% var y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("A1" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="A1" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    A1
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="A1" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                    A1
+                    </label>
+                <% } %>
+                <br>
+                <% y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("A2" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="A2" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    A2
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="A2" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                    A2
+                    </label>
+                <% } %>
+                <br>
+                <% y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("A3" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="A3" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    A3
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="A3" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                    A3
+                    </label>
+                <% } %>
+                <br>
+                <% y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("A4" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="A4" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    A4
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="A4" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                    A4
+                    </label>
+                <% } %>
+                <br>
+              </div>
+            </div>
+
+
+            <div class="flexitem">
+              <h3 class="formday">Free Blocks (B)</h3>
+              <div class="form-check" id="hsform">
+                <% var y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("B1" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="B1" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    B1
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="B1" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                    B1
+                    </label>
+                <% } %>
+                <br>
+                <% y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("B2" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="B2" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    B2
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="B2" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                    B2
+                    </label>
+                <% } %>
+                <br>
+                <% y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("B3" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="B3" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    B3
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="B3" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                    B3
+                    </label>
+                <% } %>
+                <br>
+                <% y = false %>
+                <% for (var k = 0; k < user.times.length; k++) { %>
+                    <% if("B4" == user.times[k]) { %>
+                        <% y = true; %>
+                    <% } %>
+                <% } %>
+                <% if (y == true) { %>
+                    <input class="form-check-input" type="checkbox" value="B4" id="defaultCheck1" name="times" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                    B4
+                    </label>
+                <% } else { %>
+                    <input class="form-check-input" type="checkbox" value="B4" id="defaultCheck1" name="times">
+                    <label class="form-check-label" for="defaultCheck1">
+                    B4
+                    </label>
+                <% } %>
+                <br>
+              </div>
+            </div>
+
+          </div>
+          <div class=titleWrapper>
+            <h2 class="formtitles">Your Honor Societies</h2>
+          </div>
+          <div class="form-check" id="hsform">
+            <% var y = false %>
+            <% for (var k = 0; k < user.honorsocieties.length; k++) { %>
+                <% if("Science National Honor Society" == user.honorsocieties[k]) { %>
+                    <% y = true; %>
+                <% } %>
+            <% } %>
+            <% if (y == true) { %>
+                <input class="form-check-input" type="checkbox" value="Science National Honor Society" id="defaultCheck1" name="honorsocieties" checked>
+                <label class="form-check-label" for="defaultCheck1">
+                Science National Honor Society
+                </label>
+            <% } else { %>
+                <input class="form-check-input" type="checkbox" value="Science National Honor Society" id="defaultCheck1" name="honorsocieties">
+                <label class="form-check-label" for="defaultCheck1">
+                Science National Honor Society
+                </label>
+            <% } %>
+            <br>
+            <% y = false %>
+            <% for (var k = 0; k < user.honorsocieties.length; k++) { %>
+                <% if("Mu Alpha Theta" == user.honorsocieties[k]) { %>
+                    <% y = true; %>
+                <% } %>
+            <% } %>
+            <% if (y == true) { %>
+                <input class="form-check-input" type="checkbox" value="Mu Alpha Theta" id="defaultCheck1" name="honorsocieties" checked>
+                <label class="form-check-label" for="defaultCheck1">
+                Mu Alpha Theta
+                </label>
+            <% } else { %>
+                <input class="form-check-input" type="checkbox" value="Mu Alpha Theta" id="defaultCheck1" name="honorsocieties">
+                <label class="form-check-label" for="defaultCheck1">
+                Mu Alpha Theta
+                </label>
+            <% } %>
+            <br>
+            <% y = false %>
+            <% for (var k = 0; k < user.honorsocieties.length; k++) { %>
+                <% if("National Honor Society" == user.honorsocieties[k]) { %>
+                    <% y = true; %>
+                <% } %>
+            <% } %>
+            <% if (y == true) { %>
+                <input class="form-check-input" type="checkbox" value="National Honor Society" id="defaultCheck1" name="honorsocieties" checked>
+                <label class="form-check-label" for="defaultCheck1">
+                National Honor Society
+                </label>
+            <% } else { %>
+                <input class="form-check-input" type="checkbox" value="National Honor Society" id="defaultCheck1" name="honorsocieties">
+                <label class="form-check-label" for="defaultCheck1">
+                National Honor Society
+                </label>
+            <% } %>
+            <br>
+            <% y = false %>
+            <% for (var k = 0; k < user.honorsocieties.length; k++) { %>
+                <% if("National Arts Honor Society" == user.honorsocieties[k]) { %>
+                    <% y = true; %>
+                <% } %>
+            <% } %>
+            <% if (y == true) { %>
+                <input class="form-check-input" type="checkbox" value="National Arts Honor Society" id="defaultCheck1" name="honorsocieties" checked>
+                <label class="form-check-label" for="defaultCheck1">
+                National Arts Honor Society
+                </label>
+            <% } else { %>
+                <input class="form-check-input" type="checkbox" value="National Arts Honor Society" id="defaultCheck1" name="honorsocieties">
+                <label class="form-check-label" for="defaultCheck1">
+                National Arts Honor Society
+                </label>
+            <% } %>
+            <br>
+            <% y = false %>
+            <% for (var k = 0; k < user.honorsocieties.length; k++) { %>
+                <% if("Computer Science National Honor Society" == user.honorsocieties[k]) { %>
+                    <% y = true; %>
+                <% } %>
+            <% } %>
+            <% if (y == true) { %>
+                <input class="form-check-input" type="checkbox" value="Computer Science National Honor Society" id="defaultCheck1" name="honorsocieties" checked>
+                <label class="form-check-label" for="defaultCheck1">
+                Computer Science National Honor Society
+                </label>
+            <% } else { %>
+                <input class="form-check-input" type="checkbox" value="Computer Science National Honor Society" id="defaultCheck1" name="honorsocieties">
+                <label class="form-check-label" for="defaultCheck1">
+                Computer Science National Honor Society
+                </label>
+            <% } %>
+            <br>
+            <% y = false %>
+            <% for (var k = 0; k < user.honorsocieties.length; k++) { %>
+                <% if("Social Studies Honor Society" == user.honorsocieties[k]) { %>
+                    <% y = true; %>
+                <% } %>
+            <% } %>
+            <% if (y == true) { %>
+                <input class="form-check-input" type="checkbox" value="Social Studies Honor Society" id="defaultCheck1" name="honorsocieties" checked>
+                <label class="form-check-label" for="defaultCheck1">
+                Social Studies Honor Society
+                </label>
+            <% } else { %>
+                <input class="form-check-input" type="checkbox" value="Social Studies Honor Society" id="defaultCheck1" name="honorsocieties">
+                <label class="form-check-label" for="defaultCheck1">
+                Social Studies Honor Society
+                </label>
+            <% } %>
+            <br>
+            <% y = false %>
+            <% for (var k = 0; k < user.honorsocieties.length; k++) { %>
+                <% if("English Honor Society" == user.honorsocieties[k]) { %>
+                    <% y = true; %>
+                <% } %>
+            <% } %>
+            <% if (y == true) { %>
+                <input class="form-check-input" type="checkbox" value="English Honor Society" id="defaultCheck1" name="honorsocieties" checked>
+                <label class="form-check-label" for="defaultCheck1">
+                English Honor Society
+                </label>
+            <% } else { %>
+                <input class="form-check-input" type="checkbox" value="English Honor Society" id="defaultCheck1" name="honorsocieties">
+                <label class="form-check-label" for="defaultCheck1">
+                English Honor Society
+                </label>
+            <% } %>
+            <br>
+            <% y = false %>
+            <% for (var k = 0; k < user.honorsocieties.length; k++) { %>
+                <% if("French Honor Society" == user.honorsocieties[k]) { %>
+                    <% y = true; %>
+                <% } %>
+            <% } %>
+            <% if (y == true) { %>
+                <input class="form-check-input" type="checkbox" value="French Honor Society" id="defaultCheck1" name="honorsocieties" checked>
+                <label class="form-check-label" for="defaultCheck1">
+                French Honor Society
+                </label>
+            <% } else { %>
+                <input class="form-check-input" type="checkbox" value="French Honor Society" id="defaultCheck1" name="honorsocieties">
+                <label class="form-check-label" for="defaultCheck1">
+                French Honor Society
+                </label>
+            <% } %>
+            <br>
+            <% y = false %>
+            <% for (var k = 0; k < user.honorsocieties.length; k++) { %>
+                <% if("Spanish Honor Society" == user.honorsocieties[k]) { %>
+                    <% y = true; %>
+                <% } %>
+            <% } %>
+            <% if (y == true) { %>
+                <input class="form-check-input" type="checkbox" value="Spanish Honor Society" id="defaultCheck1" name="honorsocieties" checked>
+                <label class="form-check-label" for="defaultCheck1">
+                Spanish Honor Society
+                </label>
+            <% } else { %>
+                <input class="form-check-input" type="checkbox" value="Spanish Honor Society" id="defaultCheck1" name="honorsocieties">
+                <label class="form-check-label" for="defaultCheck1">
+                Spanish Honor Society
+                </label>
+            <% } %>
+            <br>
+            <% y = false %>
+            <% for (var k = 0; k < user.honorsocieties.length; k++) { %>
+                <% if("Chinese Honor Society" == user.honorsocieties[k]) { %>
+                    <% y = true; %>
+                <% } %>
+            <% } %>
+            <% if (y == true) { %>
+                <input class="form-check-input" type="checkbox" value="Chinese Honor Society" id="defaultCheck1" name="honorsocieties" checked>
+                <label class="form-check-label" for="defaultCheck1">
+                Chinese Honor Society
+                </label>
+            <% } else { %>
+                <input class="form-check-input" type="checkbox" value="Chinese Honor Society" id="defaultCheck1" name="honorsocieties">
+                <label class="form-check-label" for="defaultCheck1">
+                Chinese Honor Society
+                </label>
+            <% } %>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary btn-lg" id="formsubmit" role="button">Submit</a>
+          </div>
+          </form>
+          <div class=spacer></div>
+          <div class="spacer"></div>
+
+
+
+
+          <% include partials/footer %>
+</body>
+
+</html>

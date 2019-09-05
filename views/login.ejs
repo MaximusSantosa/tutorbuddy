@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <% include partials/head %> 
+ <% include partials/script %>
+ <script>
+   particlesJS.load('particles-js', './javascripts/particlesjs-config.json', function() {
+    console.log('callback - particles.js config loaded');
+  });
+ </script>
+</head>
+<body>
+  <% include partials/menu %>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Sign up</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <form class="form" action="/adduser" method="post">
+                      <input placeholder="Email" type="text" class="form-control mb-2 mr-sm-2" id="email" name="email" required>
+                      <input placeholder="First Name" type="text" class="form-control mb-2 mr-sm-2" id="firstName" name="firstName" required>
+                      <input placeholder="Last Name" type="text" class="form-control mb-2 mr-sm-2" id="lastName" name="lastName" required>
+                      <input placeholder="Password" type="password" class="form-control mb-2 mr-sm-2" id="pass" name="pass" required>
+                      <button type="submit" class="btn btn-primary mb-2">Sign Up</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div id="particles-js"></div>
+  <div class="loginForm">
+    <h1 id="loginTitle">Login</h1>
+    <br>
+    <h2 id="loginForm">
+      <form class="form" action="/authenticateuser" method="post">
+        <input placeholder="Email" type="text" class="form-control mb-2 mr-sm-2" id="email" name="email" required>
+        <input placeholder="Password" type="password" class="form-control mb-2 mr-sm-2" id="pass" name="pass">
+        <button id="loginbut" type="submit" class="btn btn-primary mb-2">Login</button>
+      </form>
+    </h2>
+  </div>
+  <div class="signup">
+    <h4>Don't have an account? </h4>
+      <h3 style="text-align: center"><a style="background-color: #DAA520" class="badge badge-pill badge-primary text-white" href="#" data-toggle="modal" data-target="#exampleModal">Sign up! </a>
+      </h3>
+  </div>
+  <div>
+    <br><br><br><br>
+  </div>
+    <% include partials/footer %>
+</body>
+
+</html>

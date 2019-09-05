@@ -1,0 +1,11 @@
+{
+	"Mathematics": ["Algebra I A", "Algebra I B", "Algebra I", "Geometry", "Algebra II/Trigonometry", "Accelerated Math I", "Accelerated Math II", "Functions, Statistics, and Trigonometry", "Pre-Calculus", "Discrete Mathematics", "AP Statistics", "AP Calculus AB", "AP Calculus BC", "AP Calculus BC with Multivariable Calculus", "AT Multivariable Calculus and Linear Algebra"],
+	"Science": ["AP Biology", "APES", "Biology", "Molecular Biology", "Biotechnology", "Environmental Science", "Forensic Science", "Marine Biology", "Anatomy and Physiology", "Zoology", "AP Physics 1", "AP Physics 2", "AP Physics C", "Physics", "AP Chemistry", "Accelerated Chemistry", "Chemistry", "Earth Science", "Physical Science", "Engineering Science", "AP Computer Science", "AT Computer Science"],
+	"Arts": ["AP Studio Art Drawing", "AP Studio Art 2D", "AP Studio Art 3D", "AP Art History", "AP Music Theory"],
+	"Social Studies": ["World History", "US History", "AP World History", "AP European History", "AP US History", "AP Human Geography", "AP US Government and Politics", "AP Comparative Government and Politics", "Economics", "AP Economics", "Psychology", "AP Psychology"],
+	"Chinese": ["Chinese Novice", "Chinese Intermediate", "Chinese Intermediate II", "Chinese Intermediate III", "Chinese Intermediate High", "Chinese Intermediate High II", "Chinese Intermediate High III", "AP Chinese Language and Culture", "AT Chinese Language: History", "Chinese Language: Near Native I", "Chinese Language: AP Near Native II"],
+	"French": ["French Novice", "French Intermediate", "French Intermediate II", "French Intermediate III", "French Intermediate High", "French Intermediate High II", "French Intermediate High III", "French Advanced", "AP French Language and Culture"],
+	"Spanish": ["Spanish Novice", "Spanish Intermediate", "Spanish Intermediate II", "Spanish Intermediate III", "Spanish Intermediate High", "Spanish Intermediate High II", "Spanish Intermediate High III", "Spanish Advanced", "AP Spanish Language and Culture"],
+	"Japanese": ["Japanese IV"],
+	"English": ["English 9", "World Studies", "English 10", "American Studies", "AP English Language and Composition", "AP English Literature and Composition"]
+}

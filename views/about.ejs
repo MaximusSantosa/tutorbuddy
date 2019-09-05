@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <% include partials/head %> 
+ <% include partials/script %>
+ <script>
+   particlesJS.load('particles-js', './javascripts/particlesjs-config.json', function() {
+    console.log('callback - particles.js config loaded');
+  });
+ </script>
+</head>
+<body>
+        <% include partials/menu %>
+        <div id="particles-js"></div>
+        <div class="aboutMain">
+                <div class="aboutMainInner">
+                    <h1 class="title">About <span class="buddy">Us</span></h1>
+                    <div id="aboutdescription"> <i>TutorBuddy has been designed to
+                        ensure that your tutoring hours can be easily tracked and properly credited.
+                        It makes the life of honour societies easier and it lets individual students
+                        find out how many more hours they need. Start using TutorBuddy now!</i> </div>
+                </div>
+                <div id="buttonContainer">
+                        <button type="button" class="btn btn-primary btn-lg" id="aboutButton">Sign Up/Log In</button>
+                </div>
+        
+                <img class="title" id="homeLogoAbout" src="/images/IMG_0670.png" alt="logo"></img>
+            </div>
+            <% include partials/footer %>
+</body>
+
+</html>

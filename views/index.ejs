@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <% include partials/head %> 
+ <% include partials/script %>
+ <script>
+   particlesJS.load('particles-js', './javascripts/particlesjs-config.json', function() {
+    console.log('callback - particles.js config loaded');
+  });
+ </script>
+</head>
+<body>
+  <% include partials/menu %>
+  <div id="particles-js"></div>
+    <div class="home">
+        <h1 class="title">Tutor<span class="buddy">Buddy</span></h1>
+        <img class="title" id="homeLogo" src="/images/IMG_0671.png" alt="logo"></img>
+      <div class="title" id="description"> <i>The One Stop For <span class="buddy">All</span> Your Tutoring Needs</i> </div>
+        <div class="homeButtons">
+        </div>
+    </div>
+    <% include partials/footer %>
+</body>
+
+</html>
+

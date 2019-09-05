@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include partials/head %>
+        <% include partials/script %>
+            <script>
+                particlesJS.load('particles-js', './javascripts/particlesjs-config.json', function () {
+                    console.log('callback - particles.js config loaded');
+                });
+            </script>
+</head>
+
+<body>
+    <% include partials/menu %>
+    <div id="particles-js"></div>
+    <h1 class="title">Dashboard</h1>
+    <% if (user.fName) { %>
+        <h3 class="welcome">Welcome Back, <%= user.fName %> <%= user.lName %>!</h3>        
+    <% } else { %>
+        <h3 class="title">You are not logged in!</h3>        
+    <% } %>
+    <div class="dashContainer dashForm">
+        <h2 class=dashboardTitle>Your Tutors</h2>
+    </div>
+    <div class="row">
+        <% if ((typeof user.tutors)!= "undefined" ) { %>
+            <% if(user.tutors.length) { %>
+                <% for (var i = 0; i < user.tutors.length; i++) { %>
+                    <% if (user.tutors[i].pending == 'true') { %>
+                        <div class="card col-sm dashboardcard" >
+                            <div class="card-body">
+                                <h4 class="card-title"> ***PENDING*** </h4>
+                                <h5 class="card-title"><%= user.tutors[i].fName %> <%= user.tutors[i].lName %></h5>
+                                <p class="card-text"><%= user.tutors[i].date %></p>
+                                <p class="card-text"><%= user.tutors[i].time %></p>
+                                <p class="card-text"><%= user.tutors[i].subject %></p>
+                                <p class="card-text"><b><i>No. of Minutes:</i></b></p>
+                                <input class="form-control number-input text-center" type="number" value="60">
+                                <br>
+                            </div>
+                        </div>
+                    <% } else { %>
+                        <div class="card col-sm dashboardcard" >
+                            <div class="card-body">
+                                <h5 class="card-title"><%= user.tutors[i].fName %> <%= user.tutors[i].lName %></h5>
+                                <p class="card-text"><%= user.tutors[i].time %></p>
+                                <p class="card-text"><%= user.tutors[i].subject %></p>
+                                <p class="card-text"><b><i>No. of Minutes:</i></b></p>
+                                <form class="form" method="post">
+                                    <input class="form-control number-input text-center" name="duration" type="number" value="60">
+                                    <input type="hidden" name="tutorEmail" value="<%= user.tutors[i].email %>">
+                                    <input type="hidden" name="subject" value="<%= user.tutors[i].subject %>">
+                                    <input type="radio" name="forNHS" id="radiobutton" value="on"> Is this for NHS? <br><br>
+                                    <input type="submit" formaction="/addhours" class="btn btn-primary" value="Confirm">
+                                    <input type="submit" formaction="/deletetutor" class="btn btn-danger" value="Delete">
+                                </form>
+                            </div>
+                        </div>
+                    <% } %>
+                <% } %>
+            <% } %>
+        <% } %>
+    </div>
+    <div class="dashContainer dashForm">
+        <h2 class=dashboardTitle>Your TUTEE REQUESTS</h2>
+    </div>
+        <div class="row">
+            <% if ((typeof user.tuteeRequests)!= "undefined" ) { %>
+                <% if(user.tuteeRequests.length){ %>
+                    <% if(user.tuteeRequests.length == 1) { %>
+                        <div class="card col-sm dashboardcard" >
+                            <div class="card-body">
+                                <form class="form" action="/processtutee" method="post">
+                                    <h5 class="card-title"><%= user.tuteeRequests[0].fName %> <%= user.tuteeRequests[0].lName %></h5>
+                                    <p class="card-text"><%= user.tuteeRequests[0].time %></p>
+                                    <p class="card-text"><%= user.tuteeRequests[0].subject %></p>
+                                    <input type="hidden" name="tuteeemail" value="<%= user.tuteeRequests[0].email %>">
+                                    <input type="hidden" name="tuteefname" value="<%= user.tuteeRequests[0].fName %>">
+                                    <input type="hidden" name="tuteelname" value="<%= user.tuteeRequests[0].lName %>">
+                                    <input type="hidden" name="tuteesubject" value="<%= user.tuteeRequests[0].subject %>">
+                                    <input type="hidden" name="tuteetime" value="<%= user.tuteeRequests[0].time %>">
+                                    <button class="btn btn-primary" type="submit" formaction="/accepttuteerequest" value="accept" name="accept">Accept</button>
+                                    <button class="btn btn-danger" type="submit" formaction="/rejecttuteerequest" value="reject" name="reject">Reject</button>
+                                </form>
+                            </div>
+                        </div>
+                    <% } else { %>
+                        <% for (var i = 0; i < user.tuteeRequests.length; i++) { %>
+                            <div class="card col-sm dashboardcard" >
+                                <div class="card-body">
+                                    <form class="form" action="/processtutee1" method="post">
+                                        <h5 class="card-title"><%= user.tuteeRequests[i].fName %> <%= user.tuteeRequests[i].lName %></h5>
+                                        <p class="card-text"><%= user.tuteeRequests[i].time %></p>
+                                        <p class="card-text"><%= user.tuteeRequests[i].subject %></p>
+                                        <input type="hidden" name="tuteeemail1" value="<%= user.tuteeRequests[i].email %>">
+                                        <input type="hidden" name="tuteefname1" value="<%= user.tuteeRequests[i].fName %>">
+                                        <input type="hidden" name="tuteelname1" value="<%= user.tuteeRequests[i].lName %>">
+                                        <input type="hidden" name="tuteesubject1" value="<%= user.tuteeRequests[i].subject %>">
+                                        <input type="hidden" name="tuteetime1" value="<%= user.tuteeRequests[i].time %>">
+                                        <button class="btn btn-primary" type="submit" formaction="/accepttuteerequest1" value="accept" name="accept">Accept</button>
+                                        <button class="btn btn-danger" type="submit" formaction="/rejecttuteerequest1" value="reject" name="reject">Reject</button>
+                                    </form>
+                                </div>
+                            </div>
+                        <% } %>
+                    <% } %>
+                <% } %>
+            <% } %>
+        </div>
+    <div class="dashContainer dashForm">
+        <h2 class=dashboardTitle>Your TUTEES </h2>
+    </div>
+    <div class="row">
+        <% if ((typeof user.tutees)!= "undefined" ) { %>
+            <% if(user.tutees.length) { %>
+                <% for (var i = 0; i < user.tutees.length; i++) { %>
+                    <div class="card col-sm dashboardcard" >
+                        <div class="card-body">
+                            <h5 class="card-title"><%= user.tutees[i].fName %> <%= user.tutees[i].lName %></h5>
+                            <p class="card-text"><%= user.tutees[i].time %></p>
+                            <p class="card-text"><%= user.tutees[i].subject %></p>
+                            <form class="form" method="post" action="/deletetutee">
+                                <input type="hidden" name="tuteeEmail" value="<%= user.tutees[i].email %>">
+                                <input type="submit" class="btn btn-danger" value="Delete">
+                            </form>
+                        </div>
+                    </div>
+                <% } %>
+            <% } %>
+        <% } %>
+    </div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <% include partials/footer %>
+</body>
+
+</html>

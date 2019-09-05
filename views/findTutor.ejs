@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <% include partials/head %> 
+ <% include partials/script %>
+ <script>
+   particlesJS.load('particles-js', './javascripts/particlesjs-config.json', function() {
+    console.log('callback - particles.js config loaded');
+  });
+ </script>
+   <script>
+    function findCourse() {
+      // Declare variables 
+      var input, filter, table, tr, td, i;
+      input = document.getElementById("searchtutorbar");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("coursetable");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        } 
+      }
+    }
+    </script>
+</head>
+<body>
+  <% include partials/menu %>
+  <div id="particles-js"></div>
+  <div class="loginForm">
+    <h1 id="loginTitle">Find a Tutor</h1>
+    <div id=searchTutor>
+      <input id="searchtutorbar" onkeyup="findCourse()" type="text" name="search" placeholder="Search for a Course">
+    </div>
+  </div>
+  <div style="height: 500px; margin-top: 15px; overflow: auto;">
+  <table class="table table-dark table-hover"  id="coursetable">
+    <thead>
+      <tr>
+        <th scope="col">Course Area</th>
+        <th scope="col">Course Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (var i = 0; i < areas.length; i++) { %>
+        <% for (var j = 0; j < courses[areas[i]].length; j++) { %>
+          <tr>
+            <th scope="row"><%= areas[i] %></th>
+            <td><%= courses[areas[i]][j] %></td>
+            <td><button type="button" class="btn btn-info"><a class="findtutorlink" href=/findtutornames?name=<%= courses[areas[i]][j].replace(/ /g, "%20") %>>Find Tutors for this course</a></button></td>
+          </tr>
+        <% } %>
+      <% } %>
+    </tbody>
+  </table>
+  </div>
+
+    <% include partials/footer %>
+</body>
+
+</html>
