@@ -1,5 +1,5 @@
-# SAS Tutor Buddy
-Singapore American School Project connecting students with tutor
+# SAS TutorBuddy
+The tutoring hub for Singapore American School students
 
 # Website
 https://www.sastutorbuddy.com/
@@ -11,13 +11,10 @@ https://www.sastutorbuddy.com/
 
 ## Authors
 
-* **Sohit G** 
+* **Sohit Gatiganti** 
 * **Maximus Santosa** 
+* **Alan Chang**
 
 ## License
 
 This project is licensed under the MIT License 
-
-## Acknowledgments
-
-* Special thank to Sohit G
