@@ -15,6 +15,6 @@
     "flatpickr": "^4.5.1",
     "http-errors": "~1.6.2",
     "mongodb": "^2.2.33",
-    "morgan": "~1.9.0"
+    "morgan": "~1.9.1"
   }
 }
